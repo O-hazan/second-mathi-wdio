@@ -1,7 +1,7 @@
 const LoginPage = require("../pageobjects/login.page");
 const SecurePage = require("../pageobjects/secure.page");
 
-describe("Mathi homepage", () => {
+describe("Mathi homepage tests", () => {
   // General
   let mock;
 
