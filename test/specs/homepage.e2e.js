@@ -16,7 +16,9 @@ describe("Mathi homepage", () => {
   });
 
   after(async () => {
-    await browser.url("http://127.0.0.1:5500/admin.html#");
+    await browser.url(
+      "https://main--mathias-hazan-lira.netlify.app/admin.html#"
+    );
     await browser.maximizeWindow();
     await browser.pause(2000);
     const messages = await browser.$$("h5=AutoTestTitle");
