@@ -1,6 +1,12 @@
 # This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
 # For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
 
+<<<<<<< HEAD
+=======
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+
+>>>>>>> cbfe340c3958e743e574421a50251ccdf5cf6037
 name: Node.js Package
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -17,3 +23,7 @@ jobs:
           node-version: 16
       - run: npm install
       - run: npx wdio
+<<<<<<< HEAD
+=======
+
+>>>>>>> cbfe340c3958e743e574421a50251ccdf5cf6037
