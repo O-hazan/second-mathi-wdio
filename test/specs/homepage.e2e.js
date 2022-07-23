@@ -70,7 +70,7 @@ describe("Mathi homepage tests", () => {
     await expect(await $(".state").getText()).toBe(`Thanks autoTestSender!`);
   });
 
-  it("Toast disappears after x seconds", async () => {
+  it.only("Toast disappears after x seconds", async () => {
     await browser.url("");
     const toast = await $(".toast ");
     await $("#title").setValue("autoTestTitle");
@@ -78,7 +78,7 @@ describe("Mathi homepage tests", () => {
     await $("#message").setValue("autoTestMessage");
     await $(".SendMessageForm").$(".SendBtn").click();
     await expect(await $(".toast")).toBeDisplayed();
-    await browser.pause(6000);
+    await browser.pause(5000);
     await expect(await $(".toast").isDisplayed()).toEqual(false);
   });
 

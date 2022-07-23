@@ -62,7 +62,7 @@ exports.config = {
           "--disable-infobars",
           "--headless",
           "--disable-gpu",
-          "--window-size=1440,735",
+          // "--window-size=1440,735",
         ],
       },
       // If outputDir is provided WebdriverIO can capture driver session logs
