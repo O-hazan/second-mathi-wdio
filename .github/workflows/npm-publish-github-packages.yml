@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: 16
 
-      - run: sudo apt-get install chromium-browser
+#       - run: sudo apt-get install chromium-browser
       - run: npm install
       - run: npx wdio
 <<<<<<< HEAD
