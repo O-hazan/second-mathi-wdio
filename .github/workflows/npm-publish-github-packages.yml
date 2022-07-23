@@ -4,8 +4,9 @@
 name: Node.js Package
 
 on:
-  release:
-    types: [created]
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: ["master"]
 
 jobs:
   build:
