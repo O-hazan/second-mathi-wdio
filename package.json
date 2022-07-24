@@ -4,7 +4,7 @@
     "description": "wdio for second mathi project",
     "main": "index.js",
     "scripts": {
-        "test": "test",
+        "test": "npx wdio ",
         "wdio": "wdio run wdio.conf.js"
     },
     "author": "",
