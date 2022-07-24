@@ -17,7 +17,7 @@ jobs:
          name: ohazan/SecondMathi   
 #          ref: refs/heads/release
       - run: npm install -g serve
-      - run: serve
+      - run: serve &
 
       - uses: actions/setup-node@v3
         with:
