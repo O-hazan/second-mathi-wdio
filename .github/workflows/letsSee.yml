@@ -16,6 +16,9 @@ jobs:
         with:
          name: ohazan/SecondMathi   
 #          ref: refs/heads/release
+      - run: npm install
+      - run: serve
+
       - uses: actions/setup-node@v3
         with:
           node-version: 16
