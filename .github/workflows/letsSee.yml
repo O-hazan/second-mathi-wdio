@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@master
         with:
          name: ohazan/SecondMathi   
-         ref: /
+#          ref: /
       - run: npm install -g serve
       - run: serve &
 
