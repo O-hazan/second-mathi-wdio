@@ -18,16 +18,14 @@ jobs:
         uses: actions/checkout@v3
         with:
          repository: O-hazan/SecondMathi
-         clean: false
-
-#          ref: /
+#          github_token: ${{ secrets.G_ACCESS_TOKEN }}
       - run: npm install -g serve
       - run: serve &
-
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-
       - run: sudo apt-get install chromium-browser
       - run: npm install
+      - run: npm install -g serve
+      - run: serve &
       - run: npx wdio
