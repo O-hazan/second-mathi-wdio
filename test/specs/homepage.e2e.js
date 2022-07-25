@@ -17,7 +17,7 @@ describe("Mathi homepage tests", () => {
 
   after(async () => {
     await browser.url(
-      "https://main--mathias-hazan-lira.netlify.app/admin.html#"
+      "http://127.0.0.1:3000/admin.html"
     );
     await browser.maximizeWindow();
     await browser.pause(2000);
