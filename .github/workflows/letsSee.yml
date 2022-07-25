@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
         with:
-         name: ohazan/SecondMathi   
-#          ref: refs/heads/release
+         repository: O-hazan/SecondMathi   
+#          ref: /
       - run: npm install -g serve
       - run: serve &
 
