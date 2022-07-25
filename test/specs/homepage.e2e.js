@@ -16,9 +16,7 @@ describe("Mathi homepage tests", () => {
   });
 
   after(async () => {
-    await browser.url(
-      "http://127.0.0.1:3000/admin.html"
-    );
+    await browser.url("http://127.0.0.1:3000/admin.html");
     await browser.maximizeWindow();
     await browser.pause(2000);
     const messages = await browser.$$("h5=AutoTestTitle");
@@ -70,7 +68,7 @@ describe("Mathi homepage tests", () => {
     await expect(await $(".state").getText()).toBe(`Thanks autoTestSender!`);
   });
 
-  it.only("Toast disappears after x seconds", async () => {
+  it("Toast disappears after x seconds", async () => {
     await browser.url("");
     const toast = await $(".toast ");
     await $("#title").setValue("autoTestTitle");
