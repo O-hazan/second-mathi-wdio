@@ -62,6 +62,8 @@ exports.config = {
           "--disable-infobars",
           "--headless",
           "--disable-gpu",
+          "--window-size=1440,735",
+          "--disable-dev-shm-usage",
           // "--window-size=1440,735",
         ],
       },
