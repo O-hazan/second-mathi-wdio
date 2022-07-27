@@ -17,9 +17,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-         clean: false
-         repository: O-hazan/SecondMathi
-#          github_token: ${{ secrets.G_ACCESS_TOKEN }}
+          clean: false
+          repository: O-hazan/SecondMathi
+      #          github_token: ${{ secrets.G_ACCESS_TOKEN }}
       - run: npm install -g serve
       - run: serve &
       - uses: actions/setup-node@v3
@@ -28,6 +28,6 @@ jobs:
           clean: false
       - run: sudo apt-get install chromium-browser
       - run: npm install
-      - run: npm install -g serve 
+      - run: npm install -g serve
       - run: serve &
       - run: npx wdio
