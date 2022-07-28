@@ -105,7 +105,7 @@ exports.config = {
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
   baseUrl: "http://web", // Local
-  // baseUrl: "https://main--mathias-hazan-lira.netlify.app/", // Live
+  // baseUrl: "https://mathias-hazan-lira.netlify.app", // Live
 
   //
   // Default timeout for all waitFor* commands.

@@ -17,7 +17,7 @@ describe("Mathi homepage tests", () => {
 
   after(async () => {
     await browser.url(
-      // "https://main--mathias-hazan-lira.netlify.app/admin.html#"
+      // "https://mathias-hazan-lira.netlify.app/admin.html"
       "http://web/admin.html"
     );
     await browser.maximizeWindow();
@@ -73,17 +73,18 @@ describe("Mathi homepage tests", () => {
     await expect(await $(".state").getText()).toBe(`Thanks autoTestSender!`);
   });
 
-  // it("Toast disappears after x seconds", async () => {
-  //   await browser.url("");
-  //   const toast = await $(".toast ");
-  //   await $("#title").setValue("autoTestTitle");
-  //   await $("#sender").setValue("autoTestSender");
-  //   await $("#message").setValue("autoTestMessage");
-  //   await $(".SendMessageForm").$(".SendBtn").click();
-  //   await expect(await $(".toast")).toBeDisplayed();
-  //   await browser.pause(10000);
-  //   await expect(await $(".toast").isDisplayed()).toEqual(false);
-  // });
+  it("Toast disappears after 6 seconds", async () => {
+    await browser.url("");
+    const toast = await $(".toast ");
+    await $("#title").setValue("autoTestTitle");
+    await $("#sender").setValue("autoTestSender");
+    await $("#message").setValue("autoTestMessage");
+    await $(".SendMessageForm").$(".SendBtn").click();
+    await expect(await $(".toast")).toBeDisplayed();
+    await $("#sender").moveTo();
+    await browser.pause(6000);
+    await expect(await $(".toast").isDisplayed()).toEqual(false);
+  });
 
   it("Toast disappears when clicking the x button", async () => {
     await browser.url("");
