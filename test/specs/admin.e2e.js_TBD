@@ -1,15 +1,14 @@
-const path = require("path");
+// const path = require("path");
 
-describe("admin", () => {
-  it("upload", async () => {
-    await browser.url("https://mathias-hazan-lira.netlify.app/admin.html");
-    await browser.pause(1000);
-    await $("#galleryNav").click();
-    const filePath = path.join(__dirname, "../test-files/firstRibs.JPG");
-    await $("#file").setValue(filePath);
-    await $("#submit").click();
-    await browser.pause(5000);
-  });
+// describe("admin", () => {
+//   it("upload", async () => {
+//     await browser.url("https://mathias-hazan-lira.netlify.app/admin.html");
+//     await browser.pause(1000);
+//     await $("#galleryNav").click();
+//     const filePath = path.join(__dirname, "../test-files/firstRibs.JPG");
+//     await $("#file").setValue(filePath);
+//     await $("#submit").click();
+//     await browser.pause(5000);
+//   });
 
-  
-});
+// });
