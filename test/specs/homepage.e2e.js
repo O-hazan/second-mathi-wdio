@@ -5,7 +5,7 @@ const admin = require("../pageobjects/admin.page");
 const carouselImagesLink = "/Resources/Carousel";
 const pageTitle = "MathiSecond NEW";
 // const BASE_URL_ADMIN = "https://mathias-hazan-lira.netlify.app/admin.html";
-const BASE_URL_ADMIN = "http://web/admin.html" // Container
+const BASE_URL_ADMIN = "http://web/admin.html"; // Container
 
 describe("Mathi homepage tests", () => {
   // General
