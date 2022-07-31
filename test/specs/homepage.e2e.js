@@ -1,5 +1,11 @@
 const LoginPage = require("../pageobjects/login.page");
-const SecurePage = require("../pageobjects/secure.page");
+const homepage = require("../pageobjects/homepage.page");
+const admin = require("../pageobjects/admin.page");
+
+const carouselImagesLink = "/Resources/Carousel";
+const pageTitle = "MathiSecond NEW";
+// const BASE_URL_ADMIN = "https://mathias-hazan-lira.netlify.app/admin.html";
+const BASE_URL_ADMIN = "http://web/admin.html" // Container
 
 describe("Mathi homepage tests", () => {
   // General
@@ -16,107 +22,78 @@ describe("Mathi homepage tests", () => {
   });
 
   after(async () => {
-    await browser.url(
-      // "https://mathias-hazan-lira.netlify.app/admin.html"
-      "http://web/admin.html"
-    );
-    await browser.maximizeWindow();
-    await browser.pause(2000);
-    const messages = await browser.$$("h5=AutoTestTitle");
-    for (let i = 0; i < messages.length; i++) {
-      const message = await browser
-        .$("h5=AutoTestTitle")
-        .parentElement()
-        .$("a");
-      await message.click();
-    }
-    await browser.pause(1000);
+    await admin.removeTestMessage();
   });
 
   it("Verify page title", async () => {
     await browser.url("");
-    await expect(await browser.getTitle()).toEqual("MathiSecond NEW");
+    await expect(await browser.getTitle()).toEqual(pageTitle);
   });
 
-  it("Carosal images are source isn't empty", async () => {
+  it("Carosal images source isn't empty", async () => {
     await browser.url("");
-    await $(".carousel-inner")
-      .$$("img")
-      .forEach(async (el) => {
-        await expect(await el.getAttribute("src")).toContain(
-          "/Resources/Carousel"
-        );
-      });
+    await homepage.carouselImages.forEach(async (el) => {
+      await expect(await el.getAttribute("src")).toContain(carouselImagesLink);
+    });
   });
 
   it("Verify message block is there", async () => {
     await browser.url("");
-    await expect(await $(".row-news")).toBeDisplayed();
+    await expect(await homepage.messageForm).toBeDisplayed();
   });
 
   // Message
   it("Toast message is hidden", async () => {
-    await browser.url("");
-    const toast = await $(".toast ");
-    await expect(await toast.isDisplayed()).toBe(false);
+    await expect(await homepage.messageToast.isDisplayed()).toBe(false);
   });
 
   it("Success message sending shows a confirmation popup", async () => {
-    await browser.url("");
-    await $("#title").setValue("autoTestTitle");
-    await $("#sender").setValue("autoTestSender");
-    await $("#message").setValue("autoTestMessage");
-    await $(".SendMessageForm").$(".SendBtn").scrollIntoView();
-    await $(".SendMessageForm").$(".SendBtn").click();
-    await $(".toast").scrollIntoView();
-    await expect(await $(".toast")).toBeDisplayed();
-    await expect(await $(".state").getText()).toBe(`Thanks autoTestSender!`);
+    await homepage.sendMessage();
+    await homepage.messageToast.scrollIntoView();
+    await expect(await homepage.messageToast).toBeDisplayed();
+    await expect(await homepage.messageToastTitle.getText()).toBe(
+      `Thanks autoTestSender!`
+    );
   });
 
   it("Toast disappears after 6 seconds", async () => {
-    await browser.url("");
-    const toast = await $(".toast ");
-    await $("#title").setValue("autoTestTitle");
-    await $("#sender").setValue("autoTestSender");
-    await $("#message").setValue("autoTestMessage");
-    await $(".SendMessageForm").$(".SendBtn").click();
-    await expect(await $(".toast")).toBeDisplayed();
-    await $("#sender").moveTo();
+    await homepage.sendMessage();
+    await expect(await homepage.messageToast).toBeDisplayed();
+    await homepage.messageSender.moveTo();
     await browser.pause(6000);
-    await expect(await $(".toast").isDisplayed()).toEqual(false);
+    await expect(await homepage.messageToast.isDisplayed()).toEqual(false);
   });
 
   it("Toast disappears when clicking the x button", async () => {
-    await browser.url("");
-    const toast = await $(".toast ");
-    const closeToast = await $(".toast-header").$("button");
-    await $("#title").setValue("autoTestTitle");
-    await $("#sender").setValue("autoTestSender");
-    await $("#message").setValue("autoTestMessage");
-    await $(".SendMessageForm").$(".SendBtn").click();
+    await homepage.sendMessage();
     await browser.pause(1000);
-    await $(".toast-header").$("button").click();
+    await homepage.btnCloseToast.click();
     await browser.pause(1000);
-    await expect(await $(".toast").isDisplayed()).toEqual(false);
+    await expect(await homepage.messageToast.isDisplayed()).toEqual(false);
   });
 
   it("Send message button is disabled when opening the page", async () => {
-    const btnSend = await $("button=Send");
-    await expect(btnSend).toBeDisabled();
+    await expect(homepage.BtnMessageSend).toBeDisabled();
   });
 
   it("Send message button is enabled when all fields have value", async () => {
-    const btnSend = await $("button=Send");
-    await $("#title").setValue("autoTestTitle");
-    await $("#sender").setValue("autoTestSender");
-    await $("#message").setValue("autoTestMessage");
-    await expect(await btnSend.isEnabled()).toEqual(true);
+    await homepage.messageTitle.setValue("autoTestTitle");
+    await homepage.messageSender.setValue("autoTestSender");
+    await homepage.messageMessage.setValue("autoTestMessage");
+    await expect(await homepage.BtnMessageSend.isEnabled()).toEqual(true);
   });
 
   it("Send message button is disabled when deleting value of one field", async () => {
-    const btnSend = await $("button=Send");
-    await $("#title").setValue("autoTestTitle");
-    await $("#sender").setValue("autoTestSender");
-    await expect(await btnSend.isEnabled()).toEqual(false);
+    await homepage.messageTitle.setValue("autoTestTitle");
+    await homepage.messageSender.setValue("autoTestSender");
+    await expect(await homepage.BtnMessageSend.isEnabled()).toEqual(false);
+  });
+
+  it("Sent message appears in admin", async () => {
+    await homepage.sendMessage("appearsInAdmin");
+    await browser.url(BASE_URL_ADMIN);
+    await browser.pause(1000);
+    await expect(await admin.testMessage.isDisplayed()).toEqual(true);
+    await admin.testMessage.parentElement().$("a").click();
   });
 });

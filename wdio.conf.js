@@ -56,17 +56,17 @@ exports.config = {
       //
       browserName: "chrome",
       acceptInsecureCerts: true,
-      "goog:chromeOptions": {
-        args: [
-          "--no-sandbox",
-          "--disable-infobars",
-          "--headless",
-          "--disable-gpu",
-          "--window-size=1440,735",
-          "--disable-dev-shm-usage",
-          // "--window-size=1440,735",
-        ],
-      },
+      // "goog:chromeOptions": {
+      //   args: [
+      //     "--no-sandbox",
+      //     "--disable-infobars",
+      //     "--headless",
+      //     "--disable-gpu",
+      //     "--window-size=1440,735",
+      //     "--disable-dev-shm-usage",
+      //     // "--window-size=1440,735",
+      //   ],
+      // },
       // If outputDir is provided WebdriverIO can capture driver session logs
       // it is possible to configure which logTypes to include/exclude.
       // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -104,8 +104,8 @@ exports.config = {
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
-  baseUrl: "http://web", // Local
-  // baseUrl: "https://mathias-hazan-lira.netlify.app", // Live
+  // baseUrl: "http://web", // Container
+  baseUrl: "https://mathias-hazan-lira.netlify.app", // Live
 
   //
   // Default timeout for all waitFor* commands.
