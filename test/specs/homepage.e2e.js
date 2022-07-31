@@ -25,6 +25,8 @@ describe("Mathi homepage tests", () => {
     await admin.removeTestMessage();
   });
 
+  // General
+
   it("Verify page title", async () => {
     await browser.url("");
     await expect(await browser.getTitle()).toEqual(pageTitle);
@@ -95,5 +97,13 @@ describe("Mathi homepage tests", () => {
     await browser.pause(1000);
     await expect(await admin.testMessage.isDisplayed()).toEqual(true);
     await admin.testMessage.parentElement().$("a").click();
+  });
+
+  // Carousel
+
+  it("Carousel height is bigger than 200px", async () => {
+    const height = await $(".row-carousel").getSize("height");
+    await expect(height).toBeGreaterThan(300);
+    await console.log(height);
   });
 });

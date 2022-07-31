@@ -6,9 +6,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Get the website
         uses: actions/checkout@v3
         with:
           repository: O-hazan/SecondMathi
-      - name: Build the stack
+      - name: Build stack and test
         run: docker compose up --build --abort-on-container-exit
