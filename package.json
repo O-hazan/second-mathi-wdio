@@ -17,6 +17,7 @@
         "@wdio/spec-reporter": "^7.20.7",
         "chromedriver": "^103.0.0",
         "wdio-chromedriver-service": "^7.3.2",
-        "wdio-docker-service": "^3.2.1"
+        "wdio-docker-service": "^3.2.1",
+        "wdio-intercept-service": "^4.2.2"
     }
 }

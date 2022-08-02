@@ -1,7 +1,7 @@
 const Page = require("./page");
 
 // const BASE_URL_ADMIN = "https://mathias-hazan-lira.netlify.app/admin.html"; // Live
-const BASE_URL_ADMIN = "http://web/admin.html"; // Container
+const BASE_URL_ADMIN = "http://web/admin.html" // Container
 
 class Admin {
   get testMessage() {
@@ -10,6 +10,15 @@ class Admin {
 
   get testMessages() {
     return browser.$$("h5=AutoTestTitle");
+  }
+
+  async removeTestData(id) {
+    await browser.url(BASE_URL_ADMIN);
+    await browser.maximizeWindow();
+    await browser.pause(1000);
+    id = `#${id}`;
+    const delteItem = await $(id).$("a=Delete");
+    await delteItem.click();
   }
 
   async removeTestMessage() {
