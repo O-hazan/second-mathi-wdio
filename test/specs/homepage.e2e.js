@@ -58,6 +58,23 @@ describe("Mathi homepage tests", () => {
     );
   });
 
+  it("Message request payload contains the user message", async () => {
+    await browser.setupInterceptor();
+    await homepage.sendMessage();
+    await browser.pause(1000);
+    console.log(await browser.getRequest());
+    let res = await browser.getRequest(0);
+    let error = 0;
+    if (
+      res.body.title !== "autoTestTitle" ||
+      res.body.message !== "autoTestMessage" ||
+      res.body.sender !== "autoTestSender"
+    ) {
+      error++;
+    }
+    expect(error).toEqual(0);
+  });
+
   it("Toast disappears after 6 seconds", async () => {
     await homepage.sendMessage();
     await expect(await homepage.messageToast).toBeDisplayed();
