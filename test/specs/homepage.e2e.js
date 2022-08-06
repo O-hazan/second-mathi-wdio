@@ -27,7 +27,7 @@ describe("Mathi homepage tests", () => {
 
   // General
 
-  it("Verify page title", async () => {
+  it.only("Verify page title", async () => {
     await browser.url("");
     await expect(await browser.getTitle()).toEqual(pageTitle);
   });
